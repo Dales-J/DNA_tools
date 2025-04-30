@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Allianz DNA Access</title>
+  <style>
+    :root {
+      --light-bg: #f0f4f8;
+      --dark-bg: #0a0f1c;
+      --button-bg: #0050b3;
+      --button-hover: #003f8a;
+      --panel-bg: rgba(255, 255, 255, 0.1);
+      --text-color: #000;
+      --light-text: #000;
+      --dark-text: #fff;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--dark-bg);
+      color: var(--dark-text);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    body.light-mode {
+      background: var(--light-bg);
+      color: var(--light-text);
+    }
+    .topbar {
+      background: #1f2d40;
+      padding: 10px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .toggle-switch {
+      position: relative;
+      width: 60px;
+      height: 30px;
+      background: #ccc;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+    .toggle-switch::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 24px;
+      height: 24px;
+      background: #fff;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+    .toggle-switch.active::before {
+      transform: translateX(30px);
+    }
+    .main-container {
+      min-height: calc(100vh - 50px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      background: linear-gradient(to bottom, var(--light-bg) 0%, var(--dark-bg) 100%);
+      text-align: center;
+    }
+    body.light-mode .main-container {
+      background: linear-gradient(to bottom, var(--light-bg) 0%, #fff 100%);
+    }
+    .panel {
+      background: var(--panel-bg);
+      padding: 20px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    .panel button {
+      background: var(--button-bg);
+      color: #fff;
+      border: none;
+      padding: 15px;
+      border-radius: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .panel button:hover {
+      background: var(--button-hover);
+    }
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #aaa;
+    }
+    .login-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #111a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+    }
+    .login-box {
+      background: #fff;
+      color: #000;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .login-box input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .login-box button {
+      background: var(--button-bg);
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      color: #000;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      z-index: 2000;
+      width: 90%;
+      max-width: 400px;
+    }
+    .popup-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .popup-close {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    ul {
+      padding-left: 20px;
+      text-align: left;
+    }
+    form label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    form input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-screen" id="loginScreen">
+    <div class="login-box">
+      <h3>Enter Credentials</h3>
+      <input type="email" id="email" placeholder="Email" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="checkLogin()">Login</button>
+    </div>
+  </div>
+
+  <div class="topbar">
+    <div class="toggle-switch" id="modeSwitch"></div>
+  </div>
+  <div class="main-container">
+    <h1>Welcome to DNA Assist</h1>
+    <p>This site is currently under development. Its purpose is to provide easy access to essential links, downloadable forms, and client processing tools for Allianz operations.</p>
+    <div class="panel">
+      <button onclick="openPopup('linksPopup')">EasyLinks</button>
+      <button onclick="openPopup('formsPopup')">Forms</button>
+      <button onclick="openPopup('clientPopup')">Client</button>
+    </div>
+    <footer>All rights reserved 2025 | Coded by Dales-j</footer>
+  </div>
+
+  <!-- Popups -->
+  <div class="popup" id="linksPopup">
+    <div class="popup-header">
+      <h3>EasyLinks</h3>
+      <button class="popup-close" onclick="closePopup('linksPopup')">&times;</button>
+    </div>
+    <ul>
+      <li><a href="https://salesportal.allianz.com" target="_blank">Sales Portal</a></li>
+      <li><a href="https://expert.allianz.com" target="_blank">Allianz Expert</a></li>
+      <li><a href="https://attendance.allianz.com" target="_blank">Daily Attendance</a></li>
+    </ul>
+  </div>
+
+  <div class="popup" id="formsPopup">
+    <div class="popup-header">
+      <h3>Forms</h3>
+      <button class="popup-close" onclick="closePopup('formsPopup')">&times;</button>
+    </div>
+    <ul>
+      <li><a href="forms/sio.pdf" download>SIO Form</a></li>
+      <li><a href="forms/attestation.pdf" download>Attestation</a></li>
+      <li><a href="forms/ada.pdf" download>ADA Form</a></li>
+      <li><a href="forms/bdo-ada.pdf" download>BDO ADA</a></li>
+    </ul>
+  </div>
+
+  <div class="popup" id="clientPopup">
+    <div class="popup-header">
+      <h3>Client Information</h3>
+      <button class="popup-close" onclick="closePopup('clientPopup')">&times;</button>
+    </div>
+    <p>Please fill out the client's basic information below. Once complete, click "Generate PDF" to download a summary of this data.</p>
+    <form id="clientForm">
+      <label>Full Name: <input type="text" name="name" required></label>
+      <label>Email Address: <input type="email" name="email" required></label>
+      <label>Phone Number: <input type="text" name="phone" required></label>
+      <label>Address: <input type="text" name="address" required></label>
+      <button type="button" onclick="generatePDF()">Generate PDF</button>
+    </form>
+  </div>
+
+  <script>
+    const modeSwitch = document.getElementById('modeSwitch');
+    modeSwitch.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      modeSwitch.classList.toggle('active');
+    });
+
+    function checkLogin() {
+      const email = document.getElementById('email').value.toLowerCase();
+      const password = document.getElementById('password').value;
+      if (email === 'admin' && password === 'admin') {
+        document.getElementById('loginScreen').style.display = 'none';
+      } else {
+        alert('Incorrect credentials!');
+      }
+    }
+
+    function openPopup(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function closePopup(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    function generatePDF() {
+      alert("PDF generation will be added in the next step.");
+    }
+  </script>
+</body>
+</html>
