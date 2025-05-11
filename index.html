@@ -298,111 +298,123 @@
 
   <div class="popup" id="clientPopup">
     <div class="popup-header">
-      <h3>Client Information</h3>
-      <button class="popup-close" onclick="closePopup('clientPopup')">&times;</button>
+        <h3>Client Information</h3>
+        <button class="popup-close" onclick="closePopup('clientPopup')">&times;</button>
     </div>
-    
+
     <!-- Scrollable form with list-like layout -->
     <form id="clientForm" style="max-height: 400px; overflow-y: auto; padding-right: 10px; display: flex; flex-direction: column; gap: 15px;">
-      
-      <h4>Proposed Insured & Owner</h4>
-      <div class="form-group">
-        <label>Last Name: <input type="text" name="lastName" required></label>
-      </div>
-      <div class="form-group">
-        <label>First Name: <input type="text" name="firstName" required></label>
-      </div>
-      <div class="form-group">
-        <label>Middle Name: <input type="text" name="middleName" required></label>
-      </div>
-      <div class="form-group">
-        <label>Birth Date: <input type="date" name="birthDate" required></label>
-      </div>
-      <div class="form-group">
-        <label>Place of Birth: <input type="text" name="birthPlace" required></label>
-      </div>
-      <div class="form-group">
-        <label>Civil Status: <input type="text" name="civilStatus" required></label>
-      </div>
-      <div class="form-group">
-        <label>Gender: <input type="text" name="gender" required></label>
-      </div>
-      <div class="form-group">
-        <label>Occupation: <input type="text" name="occupation" required></label>
-      </div>
-      <div class="form-group">
-        <label>Height: <input type="text" name="height" required></label>
-      </div>
-      <div class="form-group">
-        <label>Mobile Number: <input type="text" name="mobile" required></label>
-      </div>
-      <div class="form-group">
-        <label>Home Phone Number: <input type="text" name="homePhone" required></label>
-      </div>
-      <div class="form-group">
-        <label>Residence Address & ZIP Code: <input type="text" name="residenceAddress" required></label>
-      </div>
-      <div class="form-group">
-        <label>Business/Employer’s Name: <input type="text" name="employerName" required></label>
-      </div>
-      <div class="form-group">
-        <label>Employer’s Address & ZIP Code: <input type="text" name="employerAddress" required></label>
-      </div>
-      <div class="form-group">
-        <label>Employer’s Contact Number: <input type="text" name="employerContact" required></label>
-      </div>
-      <div class="form-group">
-        <label>Email Address: <input type="email" name="email" required></label>
-      </div>
-      <div class="form-group">
-        <label>TIN or SSS Number: <input type="text" name="tinSss" required></label>
-      </div>
-  
-      <h4>Beneficiary Details</h4>
-      <div class="form-group">
-        <label>Full Name: <input type="text" name="beneficiaryName" required></label>
-      </div>
-      <div class="form-group">
-        <label>Birthday: <input type="date" name="beneficiaryBirthday" required></label>
-      </div>
-      <div class="form-group">
-        <label>Gender: <input type="text" name="beneficiaryGender" required></label>
-      </div>
-      <div class="form-group">
-        <label>Relationship to Insured: <input type="text" name="beneficiaryRelationship" required></label>
-      </div>
-      <div class="form-group">
-        <label>Contact Number: <input type="text" name="beneficiaryContact" required></label>
-      </div>
-      <div class="form-group">
-        <label>Email Address: <input type="email" name="beneficiaryEmail" required></label>
-      </div>
-      <div class="form-group">
-        <label>Current Address: <input type="text" name="beneficiaryAddress" required></label>
-      </div>
-  
-      <button type="button" onclick="generatePDF()">Generate PDF</button>
-    </form>
-  </div>
+        <h4>Proposed Insured & Owner</h4>
+        <div class="form-group">
+            <label>Last Name: <input type="text" name="lastName" required></label>
+        </div>
+        <div class="form-group">
+            <label>First Name: <input type="text" name="firstName" required></label>
+        </div>
+        <div class="form-group">
+            <label>Middle Name: <input type="text" name="middleName" required></label>
+        </div>
+        <div class="form-group">
+            <label>Birth Date: <input type="date" name="birthDate" required></label>
+        </div>
+        <div class="form-group">
+            <label>Place of Birth: <input type="text" name="birthPlace" required></label>
+        </div>
+        <div class="form-group">
+            <label>Civil Status: <input type="text" name="civilStatus" required></label>
+        </div>
+        <div class="form-group">
+            <label>Gender: <input type="text" name="gender" required></label>
+        </div>
+        <div class="form-group">
+            <label>Occupation: <input type="text" name="occupation" required></label>
+        </div>
+        <div class="form-group">
+            <label>Height: <input type="text" name="height" required></label>
+        </div>
+        <div class="form-group">
+            <label>Mobile Number: <input type="text" name="mobile" required></label>
+        </div>
+        <div class="form-group">
+            <label>Home Phone Number: <input type="text" name="homePhone" required></label>
+        </div>
+        <div class="form-group">
+            <label>Residence Address & ZIP Code: <input type="text" name="residenceAddress" required></label>
+        </div>
+        <div class="form-group">
+            <label>Business/Employer’s Name: <input type="text" name="employerName" required></label>
+        </div>
+        <div class="form-group">
+            <label>Employer’s Address & ZIP Code: <input type="text" name="employerAddress" required></label>
+        </div>
+        <div class="form-group">
+            <label>Employer’s Contact Number: <input type="text" name="employerContact" required></label>
+        </div>
+        <div class="form-group">
+            <label>Email Address: <input type="email" name="email" required></label>
+        </div>
+        <div class="form-group">
+            <label>TIN or SSS Number: <input type="text" name="tinSss" required></label>
+        </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <h4>Beneficiary Details</h4>
+        <div class="form-group">
+            <label>Full Name: <input type="text" name="beneficiaryName" required></label>
+        </div>
+        <div class="form-group">
+            <label>Birthday: <input type="date" name="beneficiaryBirthday" required></label>
+        </div>
+        <div class="form-group">
+            <label>Gender: <input type="text" name="beneficiaryGender" required></label>
+        </div>
+        <div class="form-group">
+            <label>Relationship to Insured: <input type="text" name="beneficiaryRelationship" required></label>
+        </div>
+        <div class="form-group">
+            <label>Contact Number: <input type="text" name="beneficiaryContact" required></label>
+        </div>
+        <div class="form-group">
+            <label>Email Address: <input type="email" name="beneficiaryEmail" required></label>
+        </div>
+        <div class="form-group">
+            <label>Current Address: <input type="text" name="beneficiaryAddress" required></label>
+        </div>
+
+        <button type="button" onclick="generatePDF()">Generate PDF</button>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
-  function generatePDF() {
     const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
 
-    const formData = new FormData(document.getElementById('clientForm'));
-    let content = '';
+    function generatePDF() {
+        const doc = new jsPDF();
 
-    formData.forEach((value, key) => {
-      content += `${key}: ${value}\n\n`;
-    });
+        // Collect form data
+        const form = document.getElementById('clientForm');
+        const formData = new FormData(form);
 
-    doc.text(content, 10, 10);
-    doc.save('client_info.pdf');
-  }
+        // Initialize variables to hold the form data
+        let textData = "Client Information\n\n";
+
+        // Loop through the FormData to get all the field names and values
+        formData.forEach((value, key) => {
+            textData += `${key}: ${value}\n`;
+        });
+
+        // Add the collected data to the PDF
+        doc.text(textData, 20, 20);
+
+        // Save the PDF with a generic name or based on the first name or last name from form
+        const clientName = formData.get('firstName') + " " + formData.get('lastName');
+        doc.save(`${clientName}_Client_Info.pdf`);
+    }
 </script>
+
+
+
   
 
   
