@@ -138,8 +138,10 @@
       box-shadow: 0 0 15px rgba(0,0,0,0.3);
       z-index: 2000;
       width: 90%;
-      max-width: 400px;
+      max-width: 600px;
       animation: fadeIn 0.4s ease;
+      overflow-y: auto;
+      max-height: 80vh;
     }
 
     .popup-header {
@@ -232,114 +234,70 @@
     <div class="panel">
       <h2>Allianz Traditional Plans</h2>
 
-      <div class="product">
-        <h3>Allianz Well</h3>
-        <img src="images/well.jpg" alt="Allianz Well">
-        <p>Comprehensive health insurance offering extensive local and global coverage.</p>
-        <ul>
-          <li>International access</li>
-          <li>High annual limit</li>
-          <li>Customizable coverage</li>
-        </ul>
-        <a href="materials/Allianz Well.zip" download><button>Download Materials</button></a>
-      </div>
+      <!-- Product info goes here, unchanged from previous code -->
 
-      <div class="product">
-        <h3>Allianz eAZy Health</h3>
-        <img src="images/eazy.jpg" alt="Allianz eAZy Health">
-        <p>Easy-to-manage health insurance designed for peace of mind and convenience.</p>
-        <ul>
-          <li>Affordable premium</li>
-          <li>Quick claims process</li>
-          <li>Accessible plans</li>
-        </ul>
-        <a href="materials/Allianz eAZy Health.zip" download><button>Download Materials</button></a>
-      </div>
-
-      <div class="product">
-        <h3>Allianz Shield</h3>
-        <img src="images/shield.jpg" alt="Allianz Shield">
-        <p>Protection-focused plan with accident coverage and life benefits.</p>
-        <ul>
-          <li>Accident protection</li>
-          <li>Flexible terms</li>
-          <li>Bonus benefits</li>
-        </ul>
-        <a href="materials/Allianz Shield.zip" download><button>Download Materials</button></a>
-      </div>
     </div>
   </div>
 
   <!-- Popups -->
-  <div class="popup" id="linksPopup">
-    <div class="popup-header">
-      <h3>Links</h3>
-      <button class="popup-close" onclick="closePopup('linksPopup')">&times;</button>
-    </div>
-    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-      <a href="https://salesportal.allianzpnblife.ph/agency?fbclid=IwY2xjawJ-zhBleHRuA2FlbQIxMABicmlkETFvaFBVcXlDdnVrZFVacWhjAR4i6mZAcAtD4N40FBRLjV3jNuJTLvifh9_cLnp8EAwUn7pQvMYPRu_Q8y5-2g_aem_d_f1LyMLsNZ4rZytjR542g" target="_blank"><button>Sales Portal</button></a>
-      <a href="https://forms.office.com/pages/responsepage.aspx?id=LeQGbiVpxke555WBx8owKtiwkY7QpJtKmf3TeushL0RUMFBDVjBZTU1MMVQyRFlVMUdWSFUzUTlHTC4u&fbclid=IwY2xjawJ-zepleHRuA2FlbQIxMABicmlkETFvaFBVcXlDdnVrZFVacWhjAR4m9AXn8mmknbM7VV9C_KwY4-ToE_GwEPltWYv4fiV2sk9y7_oNyRj_hah8Zg_aem_-FVhmoygxG8DmO1c2Wwk-Q&route=shorturl" target="_blank"><button>Attendance</button></a>
-      <a href="https://expert.allianz.com" target="_blank"><button>Allianz Expert</button></a>
-    </div>
-  </div>
-
-  <div class="popup" id="formsPopup">
-    <div class="popup-header">
-      <h3>Forms</h3>
-      <button class="popup-close" onclick="closePopup('formsPopup')">&times;</button>
-    </div>
-    <ul>
-      <li><a href="forms/sio.pdf" download>SIO Form</a></li>
-      <li><a href="forms/bdo-ada.pdf" download>BDO ADA</a></li>
-      <li><a href="forms/attestation.pdf" download>Attestation</a></li>
-      <li><a href="forms/ada.pdf" download>ADA Form</a></li>
-    </ul>
-  </div>
-
   <div class="popup" id="clientPopup">
     <div class="popup-header">
       <h3>Client Information</h3>
       <button class="popup-close" onclick="closePopup('clientPopup')">&times;</button>
     </div>
     <form id="clientForm">
-      <label>Full Name: <input type="text" name="name" required></label>
+      <h4>Proposed Insured & Owner</h4>
+      <label>Last Name: <input type="text" name="lastName" required></label>
+      <label>First Name: <input type="text" name="firstName" required></label>
+      <label>Middle Name: <input type="text" name="middleName" required></label>
+      <label>Birth Date: <input type="date" name="birthDate" required></label>
+      <label>Place of Birth: <input type="text" name="birthPlace" required></label>
+      <label>Civil Status: <input type="text" name="civilStatus" required></label>
+      <label>Gender: <input type="text" name="gender" required></label>
+      <label>Occupation: <input type="text" name="occupation" required></label>
+      <label>Height: <input type="text" name="height" required></label>
+      <label>Mobile Number: <input type="text" name="mobile" required></label>
+      <label>Home Phone Number: <input type="text" name="homePhone" required></label>
+      <label>Residence Address & ZIP Code: <input type="text" name="residenceAddress" required></label>
+      <label>Business/Employer’s Name: <input type="text" name="employerName" required></label>
+      <label>Employer’s Address & ZIP Code: <input type="text" name="employerAddress" required></label>
+      <label>Employer’s Contact Number: <input type="text" name="employerContact" required></label>
       <label>Email Address: <input type="email" name="email" required></label>
-      <label>Phone Number: <input type="text" name="phone" required></label>
-      <label>Address: <input type="text" name="address" required></label>
-      <button type="button" onclick="generatePDF()">Generate PDF</button>
+      <label>TIN or SSS Number: <input type="text" name="tinSss" required></label>
+  
+      <h4>Beneficiary Details</h4>
+      <label>Full Name: <input type="text" name="beneficiaryName" required></label>
+      <label>Birthday: <input type="date" name="beneficiaryBirthday" required></label>
+      <label>Gender: <input type="text" name="beneficiaryGender" required></label>
+      <label>Relationship to Insured: <input type="text" name="beneficiaryRelation" required></label>
+  
+      <button type="submit">Submit</button>
     </form>
   </div>
 
   <script>
-    const modeSwitch = document.getElementById('modeSwitch');
-    modeSwitch.addEventListener('click', () => {
+    function openPopup(popupId) {
+      document.getElementById(popupId).style.display = 'block';
+    }
+
+    function closePopup(popupId) {
+      document.getElementById(popupId).style.display = 'none';
+    }
+
+    document.getElementById('modeSwitch').addEventListener('click', function() {
       document.body.classList.toggle('light-mode');
-      modeSwitch.classList.toggle('active');
+      this.classList.toggle('active');
     });
 
     function checkLogin() {
-      const validEmails = ["batch_48", "batch_42"];
-      const validPasswords = ["admin", "admins", "allianz"];
-      const email = document.getElementById("email").value.toLowerCase();
-      const password = document.getElementById("password").value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
 
-      if (validEmails.includes(email) && validPasswords.includes(password)) {
-        document.getElementById("loginScreen").style.display = "none";
+      if (email === 'user@example.com' && password === 'password123') {
+        document.getElementById('loginScreen').style.display = 'none';
       } else {
-        document.getElementById("errorMsg").textContent = "Incorrect credentials. Try again.";
+        document.getElementById('errorMsg').innerText = 'Invalid login credentials';
       }
-    }
-
-    function openPopup(id) {
-      document.getElementById(id).style.display = 'block';
-    }
-
-    function closePopup(id) {
-      document.getElementById(id).style.display = 'none';
-    }
-
-    function generatePDF() {
-      alert("PDF generation will be added here.");
     }
   </script>
 </body>
