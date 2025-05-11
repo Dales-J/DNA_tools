@@ -234,7 +234,7 @@
 
       <div class="product">
         <h3>Allianz Well</h3>
-        <img src="images/well.jpg" alt="Allianz Well">
+        <img src="assets/images/well.png" alt="Allianz Well">
         <p>Comprehensive health insurance offering extensive local and global coverage.</p>
         <ul>
           <li>International access</li>
@@ -246,7 +246,7 @@
 
       <div class="product">
         <h3>Allianz eAZy Health</h3>
-        <img src="images/eazy.jpg" alt="Allianz eAZy Health">
+        <img src="assets/images/ez.jpg" alt="Allianz eAZy Health">
         <p>Easy-to-manage health insurance designed for peace of mind and convenience.</p>
         <ul>
           <li>Affordable premium</li>
@@ -354,7 +354,7 @@
             <label>Email Address: <input type="email" name="email" required></label>
         </div>
         <div class="form-group">
-            <label>TIN or SSS Number: <input type="text" name="tinSss" required></label>
+            <label>TIN or SSS Number: <input type="text" name="tin/SSS" required></label>
         </div>
 
         <h4>Beneficiary Details</h4>
@@ -401,6 +401,7 @@
 
         // Loop through the FormData to get all the field names and values
         formData.forEach((value, key) => {
+            // Only include the field names and values (excluding the 'submit' field)
             textData += `${key}: ${value}\n`;
         });
 
@@ -419,7 +420,7 @@
 
   
 
-  <script>
+<script>
     const modeSwitch = document.getElementById('modeSwitch');
     modeSwitch.addEventListener('click', () => {
       document.body.classList.toggle('light-mode');
@@ -446,10 +447,7 @@
     function closePopup(id) {
       document.getElementById(id).style.display = 'none';
     }
+</script>
 
-    function generatePDF() {
-      alert("PDF generation will be added here.");
-    }
-  </script>
 </body>
 </html>
